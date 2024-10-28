@@ -41,7 +41,7 @@ function testObjects() {
         });
     });
 
-    describe("calculateAverageRating", function() {
+    describe("05-objects - calculateAverageRating", function() {
         it("should return the correct average rating for the provided movies", function() {
             const movies = [
                 { title: "Movie A", ratings: [5, 4, 4] },
