@@ -1,7 +1,7 @@
 /**
  * This function returns a simple object representing a book.
  *
- * @returns {object} - An object with properties: title, author, and year.
+ * @returns {object} - An object with properties: title (should be a string), author (should be a string), and year(should be a number).
  *
  * Usage:
  * const myBook = createBook();
