@@ -7,8 +7,9 @@
  * Usage:
  * const greetJack = greetUser("Jack"); // greetJack will be "Hello, Jack"
  */
-
-
+const greetUser = (username) => {
+  return `Hello, ${username}`;
+};
 
 /**
  * This function converts a string to spinal case.
@@ -19,7 +20,15 @@
  * Usage:
  * const spinal = toSpinalCase("This Is Spinal Tap"); // spinal will be "this-is-spinal-tap"
  */
+const toSpinalCase = (str) => {
+  if (str.length !== 0) {
+    let strSplit = str.toLowerCase().split(" ");
+    return strSplit.join("-");
+  }
+  return "";
+};
 
+console.log(toSpinalCase("Hello World"));
 
 /**
  * This function calculates the time taken by light to travel a certain distance.
@@ -31,6 +40,11 @@
  * const time = lightTravelTime(300000); // time will be 1
  */
 
+const lightTravelTime = (distance) => {
+  return distance / 300000;
+};
+
+console.log(lightTravelTime(600000));
 
 /**
  * This function checks if two words are mirror words.
@@ -44,8 +58,10 @@
  * const notMirror = mirrorWordCheck("hello", "world"); // notMirror will be false
  */
 function mirrorWordCheck(word1, word2) {
+  const word2Reversed = word2.split("").reverse().join("");
+  if (word1 === word2Reversed) {
+    return true;
+  }
 
+  return false;
 }
-
-
-

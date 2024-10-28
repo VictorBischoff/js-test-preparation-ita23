@@ -10,9 +10,12 @@
  */
 
 function getNextEven(n) {
-
+  if (n % 2 === 0) {
+    return n + 2;
+  } else {
+    return n + 1;
+  }
 }
-
 
 /**
  * This function checks if a number is a multiple of another number.
@@ -27,9 +30,12 @@ function getNextEven(n) {
  */
 
 function isMultipleOf(n, m) {
-
+  if (n % m === 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
-
 
 /**
  * This function counts the number of uppercase letters in a string.
@@ -42,9 +48,14 @@ function isMultipleOf(n, m) {
  * const anotherCapitalCount = countCapitals("JavaScript"); // anotherCapitalCount will be 2
  */
 function countCapitals(str) {
-
+  let capitalCounter = 0;
+  for (char of str) {
+    if (char !== char.toLowerCase() && /[a-zA-Z]/.test(char)) {
+      capitalCounter += 1;
+    }
+  }
+  return capitalCounter;
 }
-
 
 /**
  * This function takes two words, combines them, and counts the number of vowels.
@@ -58,5 +69,24 @@ function countCapitals(str) {
  * const anotherCount = countVowelsInWords("apple", "banana"); // anotherCount will be 5
  */
 function countVowelsInWords(word1, word2) {
+  let vowelCounter = 0;
 
+  const count = (word) => {
+    const vowels = word.match(/[aeiouAEIOU]/gi);
+    if (vowels) {
+      vowelCounter += vowels.length;
+    }
+  };
+
+  // if (word1.length !== 0) {
+  //   count(word1);
+  // }
+  // if (word2.length !== 0) {
+  //   count(word2);
+  // }
+  //
+  count(word1);
+  count(word2);
+
+  return vowelCounter;
 }

@@ -13,21 +13,18 @@
  * console.log(result); // Outputs { passing: ["Alice"], failing: ["Bob"] }
  */
 function trackStudentGrades(students) {
-    const result = { passing: [], failing: [] };
+  const result = { passing: [], failing: [] };
 
-    for (const student of students) {
-        const totalGrades = student.grades.reduce((sum, grade) => sum + grade, 0);
-        const averageGrade = totalGrades / student.grades.length;
+  for (const student of students) {
+    const totalGrades = student.grades.reduce((sum, grade) => sum + grade, 0);
+    const averageGrade = totalGrades / student.grades.length;
 
-        if (student.attendance > 70 && averageGrade > 60) {
-            result.passing.push(student.name);
-        } else {
-            result.failing.push(student.name);
-        }
+    if (student.attendance > 70 && averageGrade > 60) {
+      result.passing.push(student.name);
+    } else {
+      result.failing.push(student.name);
     }
+  }
 
-    return result;
+  return result;
 }
-
-
-

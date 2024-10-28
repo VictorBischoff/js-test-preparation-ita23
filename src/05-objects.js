@@ -8,9 +8,13 @@
  * console.log(myBook.title); // Outputs the title of the book
  */
 function createBook() {
-
+  const Book = {
+    title: "Hungergames",
+    author: "Suzanne Collins",
+    year: 2008,
+  };
+  return Book;
 }
-
 
 /**
  * This function finds a book by its author from a given array of books.
@@ -24,9 +28,13 @@ function createBook() {
  * console.log(result); // Outputs {title: "Sample", author: "John Doe", year: 2020}
  */
 function findBookByAuthor(books, author) {
-
+  for (let book = 0; book < books.length; book++) {
+    if (books[book].author === author) {
+      return books[book];
+    }
+    return null;
+  }
 }
-
 
 /**
  * This function lists all book titles published before a given year.
@@ -40,7 +48,13 @@ function findBookByAuthor(books, author) {
  * console.log(oldBooks); // Outputs [{title: "A", year: 1990}]
  */
 function getOlderBooks(books, year) {
-
+  let olderBooks = [];
+  for (let index = 0; index < books.length; index++) {
+    if (books[index].year < year) {
+      olderBooks.push(books[index]);
+    }
+  }
+  return olderBooks;
 }
 
 /**
@@ -58,7 +72,26 @@ function getOlderBooks(books, year) {
  * const averageRating = calculateAverageRating(movies);
  * console.log(averageRating); // Outputs the combined average, e.g., 4.22
  */
-function calculateAverageRating(movies) {
+function imperativeCalculateAverageRating(movies) {
+  if (movies.length === 0) {
+    return 0;
+  }
+  let totalRatings = 0;
+  let ratingCount = 0;
 
+  for (let i = 0; i < movies.length; i++) {
+    let elem = movies[i];
+    for (let j = 0; j < elem.ratings.length; j++) {
+      totalRatings += elem.ratings[j];
+      ratingCount++;
+    }
+  }
+
+  return totalRatings / ratingCount;
 }
 
+function calculateAverageRating(movies) {
+  return movies
+    .flatMap((movie) => movie.ratings)
+    .reduce((sum, rating, _, arr) => sum + rating / arr.length, 0);
+}
